@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import "./index.scss";
+import Orders from "./Components/Orders";
+import Checkout from "./Components/Checkout";
 
-const App = () => (
-  <div className="mt-10 text-3xl mx-auto max-w-6xl">
-    <div>Name: order</div>
-    <div>Framework: react</div>
-    <div>Language: JavaScript</div>
-    <div>CSS: Tailwind</div>
-  </div>
-);
-ReactDOM.render(<App />, document.getElementById("app"));
+const App = () => {
+  return <div className="border-4  border-green-700">
+  <Routes>
+   <Route path="/" element={<Orders />}/>
+   <Route path=":productId/checkout" element={<Checkout />}/> 
+ </Routes>
+ </div>
+};
+
+export default App;
+
