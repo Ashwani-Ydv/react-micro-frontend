@@ -45,7 +45,7 @@ module.exports = (_, argv) => ({
       filename: "remoteEntry.js",
       remotes: {
         "product": "product@http://localhost:9001/product-app.js",
-        "order": "order@http://localhost:8082/order-app.js",
+        "order": "order@http://localhost:9002/order-app.js",
         "delivery": "delivery@http://localhost:9003/delivery-app.js",
 
       },
