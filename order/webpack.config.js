@@ -1,10 +1,10 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-const Dotenv = require('dotenv-webpack');
+
 const deps = require("./package.json").dependencies;
 module.exports = (_, argv) => ({
   output: {
-    publicPath: "http://localhost:8082/",
+    publicPath: "http://localhost:9002/",
   },
 
   resolve: {
@@ -12,7 +12,7 @@ module.exports = (_, argv) => ({
   },
 
   devServer: {
-    port: 8082,
+    port: 9002,
     historyApiFallback: true,
   },
 
@@ -42,9 +42,11 @@ module.exports = (_, argv) => ({
   plugins: [
     new ModuleFederationPlugin({
       name: "order",
-      filename: "remoteEntry.js",
+      filename: "order-app.js",
       remotes: {},
-      exposes: {},
+      exposes: {
+        "./OrderApp": "./src/App.jsx",
+      },
       shared: {
         ...deps,
         react: {
@@ -60,6 +62,5 @@ module.exports = (_, argv) => ({
     new HtmlWebPackPlugin({
       template: "./src/index.html",
     }),
-    new Dotenv()
   ],
 });
