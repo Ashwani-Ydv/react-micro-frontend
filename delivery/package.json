@@ -2,7 +2,7 @@
   "name": "delivery",
   "version": "1.0.0",
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "webpack build --output public",
     "build:dev": "webpack --mode development",
     "build:start": "cd dist && PORT=8081 npx serve",
     "start": "webpack serve --open --mode development",
